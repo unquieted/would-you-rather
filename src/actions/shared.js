@@ -1,19 +1,34 @@
-import { getInitialData } from "../utils/api"
+import { getInitialData } from "../utils/api";
+// import { getUsers, getQuestions } from "../utils/api";
 
-export function getInitialData () {
-  return Promise.all([
-    _getUsers(),
-    _getQuestions(),
-  ]).then(([users, tweets]) => ({
-    users,
-    questions,
-  }))
+
+const AUTHED_ID = 'tylermcginnis'
+
+export function handleInitialData () {
+  return (dispatch) => {
+    return getInitialData()
+      .then(({ users, questions }) => {
+        // dispatch(receiveUsers(users))
+        // dispatch(receiveTweets(questions))
+        // dispatch(setAuthedUser(AUTHED_ID))
+      })
+  }
 }
 
-export function saveQuestion (info) {
-  return _saveQuestion (info)
-}
+// export function getInitialData() {
+//   return Promise.all([_getUsers(), _getQuestions()]).then(
+//     ([users, questions]) => ({
+//       users,
+//       questions
+//     })
+//   );
+// }
 
-export function saveQuestionAnswer (info) {
-  return _saveQuestionAnswer (info)
-}
+// export function handleInitialData() {
+//   return Promise.all([getUsers(), getQuestions()]).then(
+//     ([users, questions]) => ({
+//       users,
+//       questions
+//     })
+//   );
+// }
