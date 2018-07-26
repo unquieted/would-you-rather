@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { handleInitialData } from '../src/actions/shared'
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { handleInitialData } from "../src/actions/shared";
+import logo from "./logo.svg";
+import "./App.css";
+import Dashboard from "../src/components/Dashboard";
 
 class App extends Component {
-
-   componentDidMount() {
-     this.props.dispatch(handleInitialData())
-   }
+  componentDidMount() {
+    this.props.dispatch(handleInitialData());
+  }
 
   render() {
     return (
@@ -17,12 +17,16 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Would You Rather...?</h1>
         </header>
-        <p className="App-intro">
-          Components will go here. . . .
-        </p>
+        <div>{this.props.loading === true ? null : <Dashboard />}</div>
       </div>
     );
   }
 }
 
-export default connect()(App)
+function mapStateToProps ({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)
