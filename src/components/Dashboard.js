@@ -7,6 +7,7 @@ class Dashboard extends Component {
       <div>
         <h3 className="center">Your Timeline</h3>
         <ul className="dashboard-list">
+          {console.log(this.props)}
           {this.props.questionIds.map(id => (
             <li key={id}>
               <div>QUESTION ID: {id}</div>
@@ -20,7 +21,7 @@ class Dashboard extends Component {
 
 function mapStateToProps({ questions }) {
   return {
-    tweetIds: Object.keys(questions).sort(
+    questionIds: Object.keys(questions).sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp
     )
   };
