@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { handleInitialData } from "../src/actions/shared";
-import logo from "./logo.svg";
-import "./App.css";
-import Dashboard from "../src/components/Dashboard";
+import { handleInitialData } from "../actions/shared";
+import logo from "../logo.svg";
+import "../App.css";
+import Dashboard from "../components/Dashboard";
 
 class App extends Component {
   componentDidMount() {
@@ -23,10 +23,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps({ authedUser }) {
   return {
     loading: authedUser === null
-  }
+  };
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(App);
